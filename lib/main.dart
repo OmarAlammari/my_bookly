@@ -21,7 +21,6 @@ class BookApp extends StatelessWidget {
         textTheme: GoogleFonts.montserratTextTheme(
           ThemeData.dark().textTheme,
         ),
-        
       ),
       home: const SplashView(),
     );
