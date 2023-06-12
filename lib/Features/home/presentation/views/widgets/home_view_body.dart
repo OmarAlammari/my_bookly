@@ -1,3 +1,4 @@
+import 'package:applaid_app_3_my_bookly/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -14,16 +15,15 @@ class HomeViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          CustomAppBar(),
-          FeaturedBooksListView(),
-          SizedBox(height: 50),
-          Text(
-            'Best Seller',
-            style: Styles.titleMedium,
-          ),
+        children: [
+          const CustomAppBar(),
+          const FeaturedBooksListView(),
+          const SizedBox(height: 50),
+          Text('Best Seller', style: Styles.textStyle18
+              // .copyWith(fontFamily: kGtSectraFine),
+              ),
           // BestSellerListView(),
-          BestSellerListView()
+          const BestSellerListView()
         ],
       ),
     );
