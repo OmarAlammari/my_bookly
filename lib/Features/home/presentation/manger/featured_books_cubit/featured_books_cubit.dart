@@ -1,11 +1,29 @@
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+
+import 'package:applaid_app_3_my_bookly/Features/home/data/repos/home_repo.dart';
 
 import '../../../data/models/book_model/book_model.dart';
 
 part 'featured_books_state.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
-  FeaturedBooksCubit() : super(FeaturedBooksInitial());
+  FeaturedBooksCubit(
+    this.homeRepo,
+  ) : super(FeaturedBooksInitial());
+
+  final HomeRepo homeRepo;
+  Future<void> fetchFeaturedBooks() async {
+    emit(FeaturedBooksLoading());
+    var result = await homeRepo.fetchFeatureBooks();
+    result.fold(
+      (failure) {
+        emit(FeaturedBooksFailure(failure.errMessage));
+      },
+      (books) {
+        emit(FeaturedBooksSuccess(books));
+      },
+    );
+  }
 }
