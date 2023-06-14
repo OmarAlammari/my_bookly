@@ -19,11 +19,13 @@ class VolumeInfo {
   bool? allowAnonLogging;
   String? contentVersion;
   PanelizationSummary? panelizationSummary;
-  ImageLinks imageLinks;
+  ImageLinks? imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
   String? canonicalVolumeLink;
+  num? averageRating;
+  num? ratingsCount;
 
   VolumeInfo({
     this.title,
@@ -41,11 +43,13 @@ class VolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    required this.imageLinks,
+    this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
     this.canonicalVolumeLink,
+    this.averageRating,
+    this.ratingsCount,
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
@@ -72,14 +76,15 @@ class VolumeInfo {
             ? null
             : PanelizationSummary.fromJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        // imageLinks: json['imageLinks'] == null
-        //     ? null
-        imageLinks:
-            ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+        imageLinks: json['imageLinks'] == null
+            ? null
+            : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,
         canonicalVolumeLink: json['canonicalVolumeLink'] as String?,
+        averageRating: json['averageRating'],
+        ratingsCount: json['ratingsCount'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -99,10 +104,12 @@ class VolumeInfo {
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toJson(),
-        'imageLinks': imageLinks.toJson(),
+        'imageLinks': imageLinks?.toJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
         'canonicalVolumeLink': canonicalVolumeLink,
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
       };
 }
