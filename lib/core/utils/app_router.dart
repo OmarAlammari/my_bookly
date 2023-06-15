@@ -1,8 +1,8 @@
-import 'package:applaid_app_3_my_bookly/Features/home/data/models/book_model/book_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../Features/Splash/presentation/views/splash_view.dart';
+import '../../Features/home/data/models/book_model/book_model.dart';
 import '../../Features/home/data/repos/home_repo_impl.dart';
 import '../../Features/home/presentation/manger/similar_books_cubit/similar_books_cubit.dart';
 import '../../Features/home/presentation/views/book_details_view.dart';

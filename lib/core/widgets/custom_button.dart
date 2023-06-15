@@ -24,7 +24,6 @@ class CustomButton extends StatelessWidget {
     return SizedBox(
       height: 48,
       child: TextButton(
-        // onPressed: () {},
         onPressed: onPressed,
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
